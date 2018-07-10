@@ -1,0 +1,5 @@
+{
+    "name": "ROS bag classifier",
+    "short_name": "rosbag",
+    "description": "Help teach our robots learn the human-semantics of various environments."
+}
