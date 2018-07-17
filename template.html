@@ -111,17 +111,14 @@ pybossa.taskLoaded(function(task, deferred) {
 pybossa.presentTask(function(task, deferred) {
     if ( !$.isEmptyObject(task) ) {
         console.log(task);
+        console.log('sup');
         loadUserProgress();
-        
-        if ( task.info.question ) {
-            $('#question').html(task.info.question);
-        }
 
         var player = PybossaPlayer(task.info.video_url, 'video-clip');
         $('#task-id').html(task.id);
 
         $('.btn-answer').off('click').on('click', function(evt) {
-            var answer = {'answer': $(this).attr("value")};
+            var answer = {'answer': $(this).attr("value"), 'timestamp': task.info.timestamp};
             if (typeof answer != 'undefined') {
                 pybossa.saveTask(task.id, answer).done(function() {
                     player.destroy();
